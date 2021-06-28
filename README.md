@@ -28,7 +28,7 @@ This application not requires a network connection to work.
 If you just want to install this application on your device, follow this instructions.
 
 1. Download the .APK on this link :
-   `https://github.com/WestFR/ToDoList-Android/tree/master/app-build-debug/app-debug.apk`
+   `https://github.com/deepakb339/AndroidTrainingAssignment/tree/master/app-build-debug/app-debug.apk`
 
 2. Install this .APK on your device
 
@@ -36,7 +36,7 @@ If you just want to install this application on your device, follow this instruc
 
 ## Installation (for developers)
 
-1. Clone this project in your project folder : `git clone https://github.com/WestFR/ToDoList-Android`
+1. Clone this project in your project folder : `git clone https://github.com/deepakb339/AndroidTrainingAssignment`
 
 2. Open this project thank your Android Studio and make one `Build Gradle Sync`
 
