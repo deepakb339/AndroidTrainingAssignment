@@ -4,8 +4,14 @@
     android:id="@+id/card_view_friend"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    card_view:cardCornerRadius="10dp"
+    card_view:cardElevation="10dp"
+    card_view:cardMaxElevation="10dp"
+    android:stateListAnimator="@anim/animation"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
     card_view:cardUseCompatPadding="true"
-    >
+    android:focusable="true">
 
     <RelativeLayout
         android:layout_width="match_parent"

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -37,6 +38,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private RecyclerView recyclerView;
     SwipeRefreshLayout mSwipeRefreshLayout;
     ShimmerFrameLayout shimmerFrameLayout;
+    TextView listCount;
     LinearLayout errorLayout;
     Button retry;
     HomeFragmentPresenter presenter;
@@ -52,6 +54,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         shimmerFrameLayout = binding.shimmerFrameLayout;
         errorLayout = binding.errorPage;
         retry = binding.retryBtn;
+        listCount = binding.listCount;
         // SwipeRefreshLayout
         mSwipeRefreshLayout = (SwipeRefreshLayout) binding.swipeContainer;
         mSwipeRefreshLayout.setOnRefreshListener(this);
@@ -99,6 +102,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 public void onResponse(@NotNull Call<List<Todos>> call, @NotNull Response<List<Todos>> response) {
                     shimmerFrameLayout.stopShimmer();
                     shimmerFrameLayout.setVisibility(View.INVISIBLE);
+                    listCount.setVisibility(View.VISIBLE);
                     recyclerView.setVisibility(View.VISIBLE);
                     // Stopping swipe refresh
                     mSwipeRefreshLayout.setRefreshing(false);
@@ -118,6 +122,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     }
 
     private void generateDataList(List<Todos> todosList) {
+        listCount.setText("Number of todos: "+todosList.size()+"/"+todosList.size()*2);
         CustomAdapter adapter = new CustomAdapter(getContext(), todosList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);

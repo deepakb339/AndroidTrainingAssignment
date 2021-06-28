@@ -19,13 +19,6 @@ public class MainActivityPresenter implements MainActivityContract.Presenter{
         this.context = context;
     }
 
-//    @Override
-//    public boolean checkNetwork() {
-//        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-//        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
-//        return networkInfo == null || !networkInfo.isConnected() || !networkInfo.isAvailable();
-//    }
-
     @Override
     public void applyTheme() {
         PreferenceHelper.initialize(context);

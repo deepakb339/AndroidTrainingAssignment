@@ -53,17 +53,26 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         final Todos temp = dataList.get(position);
-        String statusText = "Status : ";
+        boolean statusFlag = true;
+        String statusText = " Status : ";
         holder.txtTitle.setText(dataList.get(position).getTitle());
         if(dataList.get(position).getCompleted()){
             statusText += "Completed";
         }else{
             statusText += "Not Completed";
+            statusFlag = false;
         }
+        final String status = statusText;
         holder.status.setText(statusText);
+        if(statusFlag){
+            holder.status.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_complete_tick,0,0,0);
+        }else{
+            holder.status.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_incomplete_tick,0,0,0);
+        }
         holder.mView.setOnClickListener(v -> {
             Intent intent = new Intent(context, TodoDetailActivity.class);
             intent.putExtra("title",temp.getTitle());
+            intent.putExtra("status",status);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);
         });
